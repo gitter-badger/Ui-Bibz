@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ui-bibz by thooams</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Ui-bibz</h1>
+      <h2 class="project-tagline">Ui Frameworks based on Bootstrap</h2>
+      <a href="https://github.com/thooams/Ui-Bibz" class="btn">View on GitHub</a>
+      <a href="https://github.com/thooams/Ui-Bibz/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/thooams/Ui-Bibz/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/ui-bibz-logo-without-border.gif" alt="Ui Bibz logo"></p>
+
+<p><a href="https://travis-ci.org/thooams/Ui-Bibz"><img src="https://travis-ci.org/thooams/Ui-Bibz.svg" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/thooams/Ui-Bibz"><img src="https://codeclimate.com/github/thooams/Ui-Bibz/badges/gpa.svg" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/thooams/Ui-Bibz"><img src="https://codeclimate.com/github/thooams/Ui-Bibz/badges/coverage.svg" alt="Test Coverage"></a></p>
+
+<p>This project rocks and uses MIT-LICENSE.</p>
+
+<h1>
+<a id="uibibz" class="anchor" href="#uibibz" aria-hidden="true"><span class="octicon octicon-link"></span></a>UiBibz</h1>
+
+<blockquote>
+<p>Ui Bibz est un <a href="http://fr.wikipedia.org/wiki/Framework_d%27interface">framework d'interface</a>
+permettant de construire une interface très rapidement et simplement
+à l'aide de Ruby on Rails 4 et de Boostrap 3.</p>
+</blockquote>
+
+<p>Ui Bibz charge la librairie <a href="http://getbootstrap.com/">boostrap</a> et
+<a href="http://fontawesome.io/">awesomefont</a>.</p>
+
+<p><strong>NB</strong> : <a href="http://haml.info/">HAML</a> est utilisé pour présenter les exemples de chaque élément.
+Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.</p>
+
+<p>Tous les composants du framework Ui Bibz comportent des <em>options</em> et des <em>html_options</em>.
+Ces éléments sont basés sur l'élément <code>Component</code>.
+Un <code>component</code> accepte un contenu par variable ou par block.
+ex :</p>
+
+<h3>
+<a id="component" class="anchor" href="#component" aria-hidden="true"><span class="octicon octicon-link"></span></a>Component</h3>
+
+<p>L'élément <code>component</code> accepte dans content et block :</p>
+
+<ul>
+<li>le contenu</li>
+</ul>
+
+<p>L'élément <code>component</code> accepte en option les arguments :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#status-values">status</a></li>
+<li>class</li>
+</ul>
+
+<p>L'élément <code>component</code> accepte en html_option les arguments :</p>
+
+<ul>
+<li>class</li>
+<li>data</li>
+<li>...</li>
+</ul>
+
+<p>Ex :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c1">Component</span>.<span class="pl-k">new</span> <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> }
+<span class="pl-c"># ou</span>
+<span class="pl-c1">Component</span>.<span class="pl-k">new</span> { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> } <span class="pl-k">do</span>
+  <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>
+<span class="pl-k">end</span></pre></div>
+
+<p>Signature :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c1">Component</span>.<span class="pl-k">new</span> content <span class="pl-k">=</span> <span class="pl-c1">nil</span>, options <span class="pl-k">=</span> <span class="pl-c1">nil</span>, html_options <span class="pl-k">=</span> <span class="pl-c1">nil</span>, <span class="pl-k">&amp;</span>block</pre></div>
+
+<p><strong>NB</strong> : Pour des raisons de simplicité d'écriture, l'argument <code>class</code> est présent
+dans <code>options</code> et <code>html_options</code>.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Ajouter la gem dans Rails :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">"</span>ui_bibz<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">'</span>~&gt; 0.9.0<span class="pl-pds">'</span></span></pre></div>
+
+<p>Lancer la command suivante :</p>
+
+<div class="highlight highlight-console"><pre><span class="pl-mo">bundle install</span></pre></div>
+
+<p>Placer la ligne suivante dans <code>/app/views/layouts/application.rb</code></p>
+
+<div class="highlight highlight-ruby"><pre> <span class="pl-k">=</span> ui_bibz_meta_links</pre></div>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre>!!!
+<span class="pl-k">%</span>html
+  <span class="pl-k">%</span>head
+    ...
+    <span class="pl-k">=</span> ui_bibz_meta_links
+    ...
+  <span class="pl-k">%</span>body</pre></div>
+
+<h2>
+<a id="utilisation" class="anchor" href="#utilisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilisation</h2>
+
+<h3>
+<a id="alert" class="anchor" href="#alert" aria-hidden="true"><span class="octicon octicon-link"></span></a>Alert</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/alert.png" alt="alert"></p>
+
+<p>L'élément <code>notify</code> accepte en option les arguments :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> notify <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:info</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>eye<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="breadcrumb-fil-dariane" class="anchor" href="#breadcrumb-fil-dariane" aria-hidden="true"><span class="octicon octicon-link"></span></a>Breadcrumb (fil d'ariane)</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/breadcrumb.png" alt="breadcrumb"></p>
+
+<p>L'élément <code>breadcrumb</code> accepte en option les arguments :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li>url</li>
+</ul>
+
+<p>L'élément <code>link</code> est un <a href="#component">component</a>.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> breadcrumb <span class="pl-k">do </span>|<span class="pl-smi">b</span>|
+  <span class="pl-k">-</span> b.link <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#toto<span class="pl-pds">'</span></span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> b.link <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#momo<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> b.link <span class="pl-s"><span class="pl-pds">'</span>nono<span class="pl-pds">'</span></span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span></pre></div>
+
+<h3>
+<a id="buttons-boutons" class="anchor" href="#buttons-boutons" aria-hidden="true"><span class="octicon octicon-link"></span></a>Buttons (Boutons)</h3>
+
+<h4>
+<a id="button" class="anchor" href="#button" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button</h4>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button.png" alt="button"></p>
+
+<p>L'élément <code>button</code> accepte en option les arguments :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li><a href="#glyph-arguments">glyph</a></li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>Button<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:danger</span>, <span class="pl-c1">size:</span> <span class="pl-c1">:xs</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>star<span class="pl-pds">'</span></span> } , { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>my-button<span class="pl-pds">'</span></span> }</pre></div>
+
+<h4>
+<a id="button-dropdown" class="anchor" href="#button-dropdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Dropdown</h4>
+
+<p>L'élément <code>button_dropdown</code> accepte pour options les mêmes arguments que l'élément
+<a href="#dropdown">dropdown</a>.</p>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_dropdown.png" alt="button_link"></p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button_dropdown <span class="pl-s"><span class="pl-pds">'</span>Button Dropdown<span class="pl-pds">'</span></span> <span class="pl-k">do </span>|<span class="pl-smi">bd</span>|
+  <span class="pl-k">-</span> bd.list link_to <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> bd.list <span class="pl-s"><span class="pl-pds">'</span>header<span class="pl-pds">'</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:header</span>
+  <span class="pl-k">-</span> bd.list link_to <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> bd.list <span class="pl-s"><span class="pl-pds">'</span>---<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> bd.list link_to <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span></pre></div>
+
+<h4>
+<a id="button-group" class="anchor" href="#button-group" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button group</h4>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_group.png" alt="button_group"></p>
+
+<p>L'élément <code>button_group</code> accepte pour options les arguments :</p>
+
+<ul>
+<li>position (:vertical, :horizontal)</li>
+<li><a href="#size-values">size</a></li>
+</ul>
+
+<p>L'élément <code>list</code>accepte pour options les arguments :</p>
+
+<ul>
+<li><a href="#status-values">status</a></li>
+<li><a href="#state-values">state</a></li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button_group <span class="pl-c1">position:</span> <span class="pl-c1">:vertical</span>, <span class="pl-c1">size:</span> <span class="pl-c1">:xs</span> <span class="pl-k">do</span>
+  <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span>
+  <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>
+  <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>
+
+<span class="pl-k">=</span> button_group <span class="pl-k">do</span>
+  <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span>
+  <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>
+  <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>
+  <span class="pl-k">=</span> button_dropdown <span class="pl-s"><span class="pl-pds">'</span>Button Dropdown<span class="pl-pds">'</span></span> <span class="pl-k">do </span>|<span class="pl-smi">bd</span>|
+    <span class="pl-k">-</span> bd.list <span class="pl-s"><span class="pl-pds">'</span>header<span class="pl-pds">'</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:header</span>
+    <span class="pl-k">-</span> bd.list link_to <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> bd.list <span class="pl-s"><span class="pl-pds">'</span>---<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> bd.list link_to <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span></pre></div>
+
+<h4>
+<a id="button-link-lien-bouton" class="anchor" href="#button-link-lien-bouton" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Link (Lien Bouton)</h4>
+
+<p>L'élément <code>button_link</code>accepte pour options les arguments :</p>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_link.png" alt="button_link"></p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button_link <span class="pl-s"><span class="pl-pds">'</span>Button<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#button<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:primary</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>star<span class="pl-pds">'</span></span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>my-button<span class="pl-pds">'</span></span> }</pre></div>
+
+<h4>
+<a id="button-split-dropdown" class="anchor" href="#button-split-dropdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Split Dropdown</h4>
+
+<p>L'élément <code>button_split_dropdown</code>accepte pour options les mêmes arguments
+que l'élément <a href="#dropdown">dropdown</a>.</p>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_split_dropdown.png" alt="button_group"></p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button_split_dropdown <span class="pl-s"><span class="pl-pds">'</span>Dropdown<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:primary</span> <span class="pl-k">do </span>|<span class="pl-smi">d</span>|
+  <span class="pl-k">-</span> d.list <span class="pl-k">do</span>
+    <span class="pl-k">=</span> link_to <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>
+  <span class="pl-k">-</span> d.list <span class="pl-s"><span class="pl-pds">'</span>header<span class="pl-pds">'</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:header</span>
+  <span class="pl-k">-</span> d.list link_to <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> d.list <span class="pl-s"><span class="pl-pds">'</span>---<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> d.list link_to <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="dropdown" class="anchor" href="#dropdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dropdown</h3>
+
+<p>L'élément <code>dropdown</code>accepte pour options les arguments :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#status-values">status</a></li>
+<li>position (:left, :right)</li>
+</ul>
+
+<p>L'élément <code>list</code> est un <a href="#component">component</a> qui accepte pour options les arguments :</p>
+
+<ul>
+<li>type (:header)</li>
+<li><a href="#glyph-arguments">glyph</a></li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> dropdown <span class="pl-s"><span class="pl-pds">'</span>Dropdown<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> <span class="pl-k">do </span>|<span class="pl-smi">d</span>|
+  <span class="pl-k">-</span> d.list <span class="pl-k">do</span>
+    <span class="pl-k">=</span> link_to <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">"</span>#<span class="pl-pds">"</span></span>
+  <span class="pl-k">-</span> d.list <span class="pl-s"><span class="pl-pds">'</span>header<span class="pl-pds">'</span></span>, <span class="pl-c1">type:</span> <span class="pl-c1">:header</span>
+  <span class="pl-k">-</span> d.list link_to <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> d.list <span class="pl-s"><span class="pl-pds">'</span>---<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> d.list link_to <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span></pre></div>
+
+<p>Pour ajouter une ligne séparatrice, il suffit d'insérer 3 "-" à la suite
+ex :</p>
+
+<pre><code>...
+d.list '--'
+...
+</code></pre>
+
+<h3>
+<a id="glyph" class="anchor" href="#glyph" aria-hidden="true"><span class="octicon octicon-link"></span></a>Glyph</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/glyph.png" alt="glyph"></p>
+
+<p>Les glyphs utilisés proviennent de <a href="http://fontawesome.io/">Font Awesome</a>.
+L'élément <code>glyph</code> accepte pour options les arguments :</p>
+
+<ul>
+<li>size</li>
+<li>type</li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> glyph <span class="pl-s"><span class="pl-pds">'</span>star<span class="pl-pds">'</span></span>, { <span class="pl-c1">size:</span> <span class="pl-c1">3</span>, <span class="pl-c1">type:</span> <span class="pl-s"><span class="pl-pds">'</span>fw<span class="pl-pds">'</span></span> }, <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>star-exemple<span class="pl-pds">'</span></span>
+ou
+<span class="pl-k">=</span> glyph { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>star<span class="pl-pds">'</span></span>, <span class="pl-c1">size:</span> <span class="pl-c1">3</span>, <span class="pl-c1">type:</span> <span class="pl-s"><span class="pl-pds">'</span>fw<span class="pl-pds">'</span></span> }</pre></div>
+
+<h3>
+<a id="panel" class="anchor" href="#panel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Panel</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/panel.png" alt="panel"></p>
+
+<p>L'élément <code>panel</code> accepte pour options les arguments :</p>
+
+<ul>
+<li><a href="#state">state</a></li>
+<li>tap (true) : permet de créer un header, body et footer</li>
+</ul>
+
+<p>Les éléments <code>header</code>, <code>body</code>,<code>footer</code> sont des éléments <a href="#component">component</a>.
+Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> panel <span class="pl-s"><span class="pl-pds">'</span>danger<span class="pl-pds">'</span></span>
+<span class="pl-c"># ou</span>
+<span class="pl-k">=</span> panel <span class="pl-c1">state:</span> <span class="pl-c1">:danger</span> <span class="pl-k">do</span>
+  <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>
+<span class="pl-c"># ou</span>
+<span class="pl-k">=</span> panel({ <span class="pl-c1">tap:</span> <span class="pl-c1">true</span>, <span class="pl-c1">state:</span> <span class="pl-c1">:danger</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> }) <span class="pl-k">|</span>p<span class="pl-k">|</span>
+  <span class="pl-k">-</span> p.header <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>eye<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> p.body <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>my-body<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> p.footer <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="table" class="anchor" href="#table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table.png" alt="table"></p>
+
+<p>L'élément <code>table</code> est un tableau composé d'une recherche, une pagination et un trie de colonnes intégré.
+Le tableau est compatible <a href="http://guides.rubyonrails.org/i18n.html">I18n</a>.
+Le tableau contient pour chaque ligne un bouton dropdown action avec par défaut
+ces 3 actions : voir, éditer, supprimer. Toute les colonnes sont présentent et
+affichées par défaut.</p>
+
+<p>La table doit contenir un store. Ce store est créé dans le controlleur avec la
+méthode <code>table_search_pagination</code>.
+La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+
+<ul>
+<li>params</li>
+<li>session</li>
+<li>args (optionel)</li>
+</ul>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/controllers/document_controller.rb</span>
+<span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.table_search_pagination(params, session)</pre></div>
+
+<p>Dans le model, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
+faire une recherche sur les attributs souhaités.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/models/document.rb</span>
+searchable_attributes <span class="pl-c1">:name_fr</span>, <span class="pl-c1">:name_en</span></pre></div>
+
+<p>Un champ recherche est disponible dans la vue :
+<img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table_search_field.png" alt="table_search_field"></p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> table_search_field <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span></pre></div>
+
+<p>Une pagination est disponible dans la vue :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> table_pagination <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span></pre></div>
+
+<p>Un champs select par page est disponible dans la vue :</p>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table_pagination_per_page.png" alt="table_search_field"></p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> table_pagination_per_page <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span></pre></div>
+
+<h4>
+<a id="simple-example-table" class="anchor" href="#simple-example-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Simple Example table</h4>
+
+<p>Dans le <strong>controlleur</strong>, insérer la méthode <code>table_search_pagination</code>.
+La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+
+<ul>
+<li>params</li>
+<li>session</li>
+<li>args</li>
+</ul>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/controllers/document_controller.rb</span>
+<span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.table_search_pagination(params, session)</pre></div>
+
+<p>Dans le <strong>model</strong>, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
+faire une recherche pour les attributs souhaités.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/models/document.rb</span>
+searchable_attributes <span class="pl-c1">:name_fr</span>, <span class="pl-c1">:name_en</span></pre></div>
+
+<p>Dans la <strong>vue</strong>, insérer la méthode <code>table</code> qui peut contenir plusieurs arguments :</p>
+
+<ul>
+<li>store (ex: <a href="https://github.com/documents" class="user-mention">@documents</a>)</li>
+<li>paginable (true, false)</li>
+<li>sortable (true, false)</li>
+</ul>
+
+<p>Une table comporte des <strong>colonnes</strong> et des <strong>actions</strong>.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
+<span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span></pre></div>
+
+<p>Les actions par défauts peuvent être modifiées (voir exemple complexe) :</p>
+
+<ul>
+<li>edit</li>
+<li>view</li>
+<li>delete</li>
+</ul>
+
+<p>Elles sont intégrées à l'intérieur d'un bouton <a href="#dropdown">dropdown</a>.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
+<span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span> <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.actions <span class="pl-k">do</span>
+    <span class="pl-k">=</span> link_action <span class="pl-s"><span class="pl-pds">'</span>Show<span class="pl-pds">'</span></span>, documents_path(<span class="pl-c1">:id</span>), <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>eye<span class="pl-pds">'</span></span>
+    <span class="pl-k">=</span> link_action <span class="pl-s"><span class="pl-pds">'</span>Edit<span class="pl-pds">'</span></span>, edit_document_path(<span class="pl-c1">:id</span>), <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>pencil<span class="pl-pds">'</span></span>
+    <span class="pl-k">=</span> link_action <span class="pl-s"><span class="pl-pds">'</span>Delete<span class="pl-pds">'</span></span>, documents_path(<span class="pl-c1">:id</span>), <span class="pl-c1">method:</span> <span class="pl-c1">:delete</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>trash<span class="pl-pds">'</span></span>, <span class="pl-c1">data:</span> { <span class="pl-c1">confirm:</span> <span class="pl-s"><span class="pl-pds">'</span>Are you sure?<span class="pl-pds">'</span></span> }
+    <span class="pl-k">=</span> link_action <span class="pl-s"><span class="pl-pds">"</span>---<span class="pl-pds">"</span></span>
+    <span class="pl-k">=</span> link_action <span class="pl-s"><span class="pl-pds">'</span>Duplicate<span class="pl-pds">'</span></span>, duplicate_document_path(<span class="pl-c1">:id</span>), <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>files-o<span class="pl-pds">'</span></span>
+    <span class="pl-k">=</span> link_action <span class="pl-s"><span class="pl-pds">'</span>Alert<span class="pl-pds">'</span></span>, alert_document_path(<span class="pl-c1">:id</span>), <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>bell<span class="pl-pds">'</span></span></pre></div>
+
+<p>L'ajout de colonnes à travers la méthode <code>add</code> contient plusieurs arguments :</p>
+
+<ul>
+<li>name (nom de la colonne)</li>
+<li>data_index (le nom de l'attribut)</li>
+<li>count (utilise la méthode count sur l'élément)</li>
+<li>date_format (formate l'affichage de la date en utilisant la méthode <code>strftime</code> ex: '%Y/%M/%D')</li>
+<li>format (formate les élements de la colone en utilisant <strong>lambda</strong>)</li>
+<li>link (ajoute un lien où l'expression <code>:id</code> est parsé et remplacé par l'entier correspondant)</li>
+<li>sort (permet de trier sur des champs )</li>
+<li>custom_sort (indique que le tableau sera triéé d'une manière personnalisée)</li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
+<span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span> <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.columns <span class="pl-k">do </span>|<span class="pl-smi">c</span>|
+    <span class="pl-k">-</span> c.add { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span> }
+    <span class="pl-k">-</span> c.add { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Name fr<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>name_fr<span class="pl-pds">'</span></span>, <span class="pl-c1">link:</span> edit_document_path(<span class="pl-c1">:id</span>)}
+    <span class="pl-k">-</span> c.add { <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>name_en<span class="pl-pds">'</span></span> }
+    <span class="pl-k">-</span> c.add { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Hotline<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>hotline_access<span class="pl-pds">'</span></span>, <span class="pl-c1">format:</span> lambda{ |<span class="pl-smi">records</span>, <span class="pl-smi">record</span>| glyph(record.icon) }}
+    <span class="pl-k">-</span> c.add { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Updated at<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>updated_at<span class="pl-pds">'</span></span>, <span class="pl-c1">date_format:</span> <span class="pl-s"><span class="pl-pds">'</span>%Y<span class="pl-pds">'</span></span> }</pre></div>
+
+<h4>
+<a id="complex-example-table" class="anchor" href="#complex-example-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complex Example table</h4>
+
+<p>Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
+cela :</p>
+
+<p>Dans le controlleur, insérer la méthode <code>table_search_pagination</code> en ajoutant
+un <code>includes</code> juste avant.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/controllers/document_controller.rb</span>
+<span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.includes(<span class="pl-c1">:users</span>).table_search_pagination(params, session)</pre></div>
+
+<p>Dans la vue, insérer la méthod <code>table</code>.
+NB: On peut créer ces propres méthodes comme <code>user_name</code> dans notre model "Document" et
+l'utiliser dans le data_index.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
+<span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span> <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.columns <span class="pl-k">do </span>|<span class="pl-smi">c</span>|
+    <span class="pl-k">-</span> c.add { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Users<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>user_name<span class="pl-pds">'</span></span>, <span class="pl-c1">sort:</span> <span class="pl-s"><span class="pl-pds">"</span>user.name<span class="pl-pds">"</span></span> }</pre></div>
+
+<h4>
+<a id="ultra-complex-example-table" class="anchor" href="#ultra-complex-example-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ultra Complex Example table</h4>
+
+<p>Si l'on souhaite, par exemple, dénombrer des utilisateurs qui ont un lien non
+direct avec les documents.
+Imaginons par exemple qu'un utilisateur à des produits et que
+ces produits contiennent plusieurs documents. On souhaite compter le nombre
+d'utilisateurs par document.</p>
+
+<p>On peut ajouter des arguments dans la méthode <code>table_search_pagination</code>
+qui vont permettre de faire des jointures.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/controllers/document_controller.rb</span>
+arguments  <span class="pl-k">=</span> { <span class="pl-c1">sortable:</span> {
+  <span class="pl-c1">column:</span> <span class="pl-s"><span class="pl-pds">'</span>users<span class="pl-pds">'</span></span>,
+  <span class="pl-c1">count:</span>  <span class="pl-c1">true</span>,
+  <span class="pl-c1">joins:</span> <span class="pl-s"><span class="pl-pds">"</span>LEFT OUTER JOIN documents_products ON documents_products.document_id = documents.id</span>
+<span class="pl-s">          LEFT OUTER JOIN products ON products.id = documents_products.product_id</span>
+<span class="pl-s">          LEFT OUTER JOIN products_users ON products_users.product_id = products.id</span>
+<span class="pl-s">          LEFT OUTER JOIN users ON users.id = products_users.user_id<span class="pl-pds">"</span></span>
+} }
+
+<span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.includes(<span class="pl-c1">:users</span>).table_search_pagination(params, session,
+arguments)</pre></div>
+
+<p>Ici l'argument sortable signifie que l'on souhaite s'interresser à la
+fonctionnalité de trie.
+Pour celà il faut :</p>
+
+<ul>
+<li>définir le nom de la colonne triéé à travers l'argument <code>column:</code> (string)</li>
+<li>définir si le traitement se fait sur le comptage avec l'argument <code>count:</code>
+(boolean)</li>
+<li>définir la jointure avec l'argument <code>joins:</code> (string, array, hash)</li>
+</ul>
+
+<p>Dans la vue :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
+<span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span> <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.columns <span class="pl-k">do </span>|<span class="pl-smi">c</span>|
+    <span class="pl-k">-</span> c.add({ <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Users<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>users<span class="pl-pds">'</span></span>, <span class="pl-c1">count:</span> <span class="pl-c1">true</span>, <span class="pl-c1">custom_sort:</span> <span class="pl-c1">true</span> })</pre></div>
+
+<h4>
+<a id="table-i18n" class="anchor" href="#table-i18n" aria-hidden="true"><span class="octicon octicon-link"></span></a>table I18n</h4>
+
+<p>La table est utilisable avec I18n. Les traductions
+s'executent par ordre d'importance dans cet ordre précis pour la colonne "name_fr" par exemple.</p>
+
+<ol>
+<li>ui_biz.table.headers.document.name_fr</li>
+<li>ui_biz.table.headers.defaults.name_fr</li>
+<li>activerecord.attributes.document.name_fr</li>
+<li>activerecord.attributes.defaults.name_fr</li>
+</ol>
+
+<p>Le placeholder du champ recherche est utilisable et traduisible avec les attributs activerecord dans le fichier locale.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c"># config/locales/fr.yml</span>
+...
+<span class="pl-c1">activerecord:</span>
+  <span class="pl-c1">models:</span>
+      <span class="pl-c1">user:</span> <span class="pl-s"><span class="pl-pds">'</span>Utilisateur<span class="pl-pds">'</span></span>
+  <span class="pl-c1">attributes:</span>
+    <span class="pl-c1">defaults:</span>
+      <span class="pl-c1">name_fr:</span> <span class="pl-s"><span class="pl-pds">'</span>Nom fr<span class="pl-pds">'</span></span>
+...</pre></div>
+
+<h3>
+<a id="table-panel" class="anchor" href="#table-panel" aria-hidden="true"><span class="octicon octicon-link"></span></a>Table Panel</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table_panel.png" alt="table_panel"></p>
+
+<p>Le composant <code>table_panel</code> est un tableau dans un panel.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> table_panel <span class="pl-c1">store:</span> <span class="pl-smi">@users</span>
+<span class="pl-c">#ou</span>
+<span class="pl-k">=</span> table_panel({ <span class="pl-c1">store:</span> <span class="pl-smi">@users</span>, <span class="pl-c1">tap:</span> <span class="pl-c1">true</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:danger</span> }) <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.columns <span class="pl-k">do </span>|<span class="pl-smi">cls</span>|
+    <span class="pl-k">-</span> cls.column <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>id<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> cls.column <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Username<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>username<span class="pl-pds">'</span></span>, <span class="pl-c1">link:</span> edit_user_path(<span class="pl-c1">:id</span>)
+    <span class="pl-k">-</span> cls.column <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Name<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>name<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> cls.column <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Email<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> cls.column <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>Role<span class="pl-pds">'</span></span>, <span class="pl-c1">data_index:</span> <span class="pl-s"><span class="pl-pds">'</span>role_name<span class="pl-pds">'</span></span>, <span class="pl-c1">sort:</span> <span class="pl-s"><span class="pl-pds">'</span>roles.name<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> g.actions <span class="pl-k">do </span>|<span class="pl-smi">acs</span>|
+    <span class="pl-k">-</span> acs.action <span class="pl-s"><span class="pl-pds">'</span>Toto<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> edit_user_path(<span class="pl-c1">:id</span>), <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>pencil<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> acs.action <span class="pl-s"><span class="pl-pds">"</span>---<span class="pl-pds">"</span></span>
+    <span class="pl-k">-</span> acs.action <span class="pl-s"><span class="pl-pds">'</span>momo<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> user_path(<span class="pl-c1">:id</span>), <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>eye<span class="pl-pds">'</span></span>
+</pre></div>
+
+<h3>
+<a id="list" class="anchor" href="#list" aria-hidden="true"><span class="octicon octicon-link"></span></a>List</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/list.png" alt="list"></p>
+
+<p>Par défaut une liste à pour tag <code>&lt;li&gt;</code>. Mais elle peut se transformer en lien <code>&lt;a&gt;</code>
+à travers l'option <code>type:</code>. Par défaut le tag <code>&lt;li&gt;</code> est présent.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> list_group <span class="pl-c1">type:</span> <span class="pl-c1">:link</span> <span class="pl-k">do </span>|<span class="pl-smi">lg</span>|
+  <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Momo<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span> }, { <span class="pl-c1">href:</span> <span class="pl-s"><span class="pl-pds">'</span>#Momo<span class="pl-pds">'</span></span> }
+  <span class="pl-k">-</span> lg.list({ <span class="pl-c1">tap:</span> <span class="pl-c1">true</span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span> }, { <span class="pl-c1">href:</span> <span class="pl-s"><span class="pl-pds">'</span>#Toto<span class="pl-pds">'</span></span> }) <span class="pl-k">do </span>|<span class="pl-smi">l</span>|
+    <span class="pl-k">-</span> l.header <span class="pl-s"><span class="pl-pds">'</span>My title<span class="pl-pds">'</span></span>
+    <span class="pl-k">-</span> l.body <span class="pl-s"><span class="pl-pds">'</span>My title<span class="pl-pds">'</span></span>
+<span class="pl-c"># ou</span>
+<span class="pl-k">=</span> list_group <span class="pl-k">do </span>|<span class="pl-smi">lg</span>|
+  <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Momo<span class="pl-pds">'</span></span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span>, <span class="pl-c1">badge:</span> <span class="pl-c1">2</span>
+  <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Toto<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="nav" class="anchor" href="#nav" aria-hidden="true"><span class="octicon octicon-link"></span></a>Nav</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/nav.png" alt="nav"></p>
+
+<p>Par défaut la navigation comporte des onglets "tab".
+L'élément <code>nav</code> accepte en option les arguments :</p>
+
+<ul>
+<li>type (:pills, :tabs)</li>
+<li>position (:justified, :stacked)</li>
+<li>tap (true)</li>
+</ul>
+
+<p>L'élement link est un <a href="#component">component</a>.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> nav(<span class="pl-c1">type:</span> <span class="pl-c1">:pills</span>, <span class="pl-c1">position:</span> <span class="pl-c1">:justified</span>, <span class="pl-c1">tap:</span> <span class="pl-c1">true</span>) <span class="pl-k">do </span>|<span class="pl-smi">d</span>|
+  d.link <span class="pl-s"><span class="pl-pds">'</span>Test<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#test<span class="pl-pds">'</span></span>, <span class="pl-c1">badge:</span> <span class="pl-c1">6</span>
+  d.link <span class="pl-s"><span class="pl-pds">'</span>Test2<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#test2<span class="pl-pds">'</span></span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span></pre></div>
+
+<h3>
+<a id="label" class="anchor" href="#label" aria-hidden="true"><span class="octicon octicon-link"></span></a>Label</h3>
+
+<h3>
+<a id="row" class="anchor" href="#row" aria-hidden="true"><span class="octicon octicon-link"></span></a>Row</h3>
+
+<p>Le composant row génére une div avec la class row.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> row <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>toto<span class="pl-pds">'</span></span> <span class="pl-k">do</span>
+  <span class="pl-k">=</span> content
+<span class="pl-c"># =&gt; &lt;div class='row toto'&gt;content&lt;/div&gt;</span></pre></div>
+
+<h3>
+<a id="col" class="anchor" href="#col" aria-hidden="true"><span class="octicon octicon-link"></span></a>Col</h3>
+
+<p>L'élément <code>col</code> est un <a href="#composant">composant</a> qui accèpte en arguments :</p>
+
+<ul>
+<li>num</li>
+<li>offset</li>
+<li>size</li>
+</ul>
+
+<p>ou</p>
+
+<ul>
+<li>un tableau de hashes avec les arguments <code>num</code>, <code>offset</code> et <code>size</code> à l'intérieur.</li>
+</ul>
+
+<p>Ces paramètres génèrent les classes qui seront insérées dans la div avec la classe
+col.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> col({<span class="pl-c1">num:</span> <span class="pl-c1">2</span>, <span class="pl-c1">size:</span> <span class="pl-c1">:lg</span>}, <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
+  <span class="pl-k">=</span> content
+
+<span class="pl-c"># =&gt; &lt;div class='col-lg-2 test'&gt;content&lt;/div&gt;</span>
+
+<span class="pl-c"># ou</span>
+<span class="pl-k">=</span> col([{ <span class="pl-c1">offset:</span> <span class="pl-c1">1</span>, <span class="pl-c1">size:</span> <span class="pl-c1">:xs</span>}, { <span class="pl-c1">num:</span> <span class="pl-c1">3</span>}], <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span>) <span class="pl-k">do</span>
+  <span class="pl-k">=</span> content
+
+<span class="pl-c"># =&gt; &lt;div class='col-xs-offset-1 col-md-3 test'&gt;content&lt;/div&gt;</span></pre></div>
+
+<h3>
+<a id="grid" class="anchor" href="#grid" aria-hidden="true"><span class="octicon octicon-link"></span></a>Grid</h3>
+
+<p>Une grid est un composant qui est composé de 5 vues :</p>
+
+<ul>
+<li>top</li>
+<li>right</li>
+<li>bottom</li>
+<li>left</li>
+<li>center</li>
+</ul>
+
+<p>La vue <strong>center</strong> est obligatoire.
+Une vue à pour arguments :</p>
+
+<ul>
+<li>position (:top, :left, :bottom, :right, :center)</li>
+<li>num (1..12) 12 étant le nombre limite de colonnes utilisable dans boostrap.</li>
+</ul>
+
+<p>L'argument <code>position</code> détermine la position de la vue et l'argument <code>num</code> determine
+le nombre de colonnes occupées par la vue.</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> grid <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.view <span class="pl-c1">num:</span> <span class="pl-c1">3</span>, <span class="pl-c1">position:</span> <span class="pl-c1">:left</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> list_group(<span class="pl-c1">type:</span> <span class="pl-c1">:link</span>) <span class="pl-k">do </span>|<span class="pl-smi">lg</span>|
+      <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Link 1<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#link1<span class="pl-pds">'</span></span> }
+      <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Link 2<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#link1<span class="pl-pds">'</span></span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span> }
+      <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Link 1<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#link1<span class="pl-pds">'</span></span> }
+      <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Link 3<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#link1<span class="pl-pds">'</span></span> }
+      <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Link 4<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#link1<span class="pl-pds">'</span></span> }
+  <span class="pl-k">-</span> g.view({ <span class="pl-c1">position:</span> <span class="pl-c1">:top</span>}) <span class="pl-k">do</span>
+    <span class="pl-k">=</span> button_group(<span class="pl-c1">type:</span> <span class="pl-c1">:toolbar</span>) <span class="pl-k">do</span>
+      <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>option 1<span class="pl-pds">'</span></span>
+      <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>option 2<span class="pl-pds">'</span></span>
+      <span class="pl-k">=</span> button <span class="pl-s"><span class="pl-pds">'</span>option 3<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> g.view <span class="pl-c1">position:</span> <span class="pl-c1">:center</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@users</span>, <span class="pl-c1">type:</span> <span class="pl-c1">:bordered</span>
+  <span class="pl-k">-</span> g.view <span class="pl-c1">position:</span> <span class="pl-c1">:bottom</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>bottom<span class="pl-pds">'</span></span>
+
+<span class="pl-k">=</span> grid <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
+  <span class="pl-k">-</span> g.view <span class="pl-c1">num:</span> <span class="pl-c1">5</span>, <span class="pl-c1">position:</span> <span class="pl-c1">:left</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>left<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> g.view <span class="pl-c1">position:</span> <span class="pl-c1">:right</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>right<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> g.view({ <span class="pl-c1">position:</span> <span class="pl-c1">:top</span>}, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>success<span class="pl-pds">'</span></span>}) <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>top<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> g.view <span class="pl-c1">position:</span> <span class="pl-c1">:center</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>center<span class="pl-pds">'</span></span>
+  <span class="pl-k">-</span> g.view <span class="pl-c1">position:</span> <span class="pl-c1">:bottom</span> <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>bottom<span class="pl-pds">'</span></span></pre></div>
+
+<h3>
+<a id="arguments-and-values" class="anchor" href="#arguments-and-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>Arguments and Values</h3>
+
+<h4>
+<a id="status-values" class="anchor" href="#status-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>Status values</h4>
+
+<ul>
+<li>:active</li>
+<li>:disable</li>
+</ul>
+
+<h4>
+<a id="size-values" class="anchor" href="#size-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>Size values</h4>
+
+<ul>
+<li>:xs</li>
+<li>:sm</li>
+<li>:lg</li>
+</ul>
+
+<h4>
+<a id="state-values" class="anchor" href="#state-values" aria-hidden="true"><span class="octicon octicon-link"></span></a>State values</h4>
+
+<ul>
+<li>:default</li>
+<li>:primary</li>
+<li>:info</li>
+<li>:success</li>
+<li>:warning</li>
+<li>:danger</li>
+</ul>
+
+<h4>
+<a id="glyph-arguments" class="anchor" href="#glyph-arguments" aria-hidden="true"><span class="octicon octicon-link"></span></a>Glyph arguments</h4>
+
+<ul>
+<li>name</li>
+<li>size</li>
+<li>type</li>
+</ul>
+
+<h1>
+<a id="plus-de-détails" class="anchor" href="#plus-de-d%C3%A9tails" aria-hidden="true"><span class="octicon octicon-link"></span></a>Plus de détails</h1>
+
+<p>Pour plus d'informations, vous pouvez accéder à la documentation rdoc en
+générant cette dernière :</p>
+
+<pre><code>rake rdoc
+</code></pre>
+
+<h1>
+<a id="conflits" class="anchor" href="#conflits" aria-hidden="true"><span class="octicon octicon-link"></span></a>Conflits</h1>
+
+<p>Certaines méthodes dans le helper peuvent être en conflit avec d'autres
+librairies. Le cas échéant, vous pouvez utiliser directement la librairie UiBibz
+comme ci-dessous.</p>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-c1">UiBibz</span>::<span class="pl-c1">Ui</span>::<span class="pl-c1">Panel</span>.<span class="pl-k">new</span>(<span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span>}).render
+<span class="pl-c"># au lieu de</span>
+panel <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> }</pre></div>
+
+<h1>
+<a id="a-faire-" class="anchor" href="#a-faire-" aria-hidden="true"><span class="octicon octicon-link"></span></a>A faire :</h1>
+
+<ul>
+<li>progress bar</li>
+<li>media
+...</li>
+</ul>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/thooams/Ui-Bibz">Ui-bibz</a> is maintained by <a href="https://github.com/thooams">thooams</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
+
