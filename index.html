@@ -28,7 +28,7 @@
 <p>This project rocks and uses MIT-LICENSE.</p>
 
 <h1>
-<a id="uibibz" class="anchor" href="#uibibz" aria-hidden="true"><span class="octicon octicon-link"></span></a>UiBibz</h1>
+<a id="ui-bibz" class="anchor" href="#ui-bibz" aria-hidden="true"><span class="octicon octicon-link"></span></a>Ui Bibz</h1>
 
 <blockquote>
 <p>Ui Bibz est un <a href="http://fr.wikipedia.org/wiki/Framework_d%27interface">framework d'interface</a>
@@ -37,15 +37,14 @@ permettant de construire une interface très rapidement et simplement
 </blockquote>
 
 <p>Ui Bibz charge la librairie <a href="http://getbootstrap.com/">boostrap</a> et
-<a href="http://fontawesome.io/">awesomefont</a>.</p>
+<a href="http://fontawesome.io/">awesomefont</a> en <a href="https://fr.wikipedia.org/wiki/Content_delivery_network">CDN</a>.</p>
 
 <p><strong>NB</strong> : <a href="http://haml.info/">HAML</a> est utilisé pour présenter les exemples de chaque élément.
-Vous pouvez bien entendu utiliser l'interpréteur ERB dans votre application Rails.</p>
+Vous pouvez bien entendu utiliser l'interpréteur <a href="https://en.wikipedia.org/wiki/ERuby">ERB</a> dans votre application Rails.</p>
 
-<p>Tous les composants du framework Ui Bibz comportent des <em>options</em> et des <em>html_options</em>.
+<p>Tous les composants du framework Ui Bibz comportent l'agument <em>options</em> et l'argument <em>html_options</em>.
 Ces éléments sont basés sur l'élément <code>Component</code>.
-Un <code>component</code> accepte un contenu par variable ou par block.
-ex :</p>
+Un <code>component</code> accepte un contenu par variable ou par block.</p>
 
 <h3>
 <a id="component" class="anchor" href="#component" aria-hidden="true"><span class="octicon octicon-link"></span></a>Component</h3>
@@ -56,7 +55,7 @@ ex :</p>
 <li>le contenu</li>
 </ul>
 
-<p>L'élément <code>component</code> accepte en option les arguments :</p>
+<p>L'élément <code>component</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#state-values">state</a></li>
@@ -65,7 +64,7 @@ ex :</p>
 <li>class</li>
 </ul>
 
-<p>L'élément <code>component</code> accepte en html_option les arguments :</p>
+<p>L'élément <code>component</code> à pour <code>html_options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li>class</li>
@@ -73,11 +72,11 @@ ex :</p>
 <li>...</li>
 </ul>
 
-<p>Ex :</p>
+<p>Exemple :</p>
 
-<div class="highlight highlight-ruby"><pre><span class="pl-c1">Component</span>.<span class="pl-k">new</span> <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> }
+<div class="highlight highlight-ruby"><pre><span class="pl-c1">Component</span>.<span class="pl-k">new</span> <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span>, <span class="pl-c1">glyph:</span> { <span class="pl-c1">name:</span> <span class="pl-s"><span class="pl-pds">'</span>pencil<span class="pl-pds">'</span></span>, <span class="pl-c1">size:</span> <span class="pl-c1">3</span>} }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> }
 <span class="pl-c"># ou</span>
-<span class="pl-c1">Component</span>.<span class="pl-k">new</span> { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> } <span class="pl-k">do</span>
+<span class="pl-c1">Component</span>.<span class="pl-k">new</span> { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>eye<span class="pl-pds">'</span></span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> } <span class="pl-k">do</span>
   <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>
 <span class="pl-k">end</span></pre></div>
 
@@ -93,7 +92,7 @@ dans <code>options</code> et <code>html_options</code>.</p>
 
 <p>Ajouter la gem dans Rails :</p>
 
-<div class="highlight highlight-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">"</span>ui_bibz<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">'</span>~&gt; 0.9.0<span class="pl-pds">'</span></span></pre></div>
+<div class="highlight highlight-ruby"><pre><span class="pl-k">gem</span> <span class="pl-s"><span class="pl-pds">"</span>ui_bibz<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">'</span>~&gt; 1.0.0<span class="pl-pds">'</span></span></pre></div>
 
 <p>Lancer la command suivante :</p>
 
@@ -113,6 +112,18 @@ dans <code>options</code> et <code>html_options</code>.</p>
     ...
   <span class="pl-k">%</span>body</pre></div>
 
+<p>Placer la ligne suivante dans <code>/app/assets/stylesheets/applications.css</code></p>
+
+<div class="highlight highlight-ruby"><pre>...
+<span class="pl-k">*=</span> <span class="pl-k">require</span> ui_bibz
+...</pre></div>
+
+<p>Placer la ligne suivante dans <code>/app/assets/javascripts/applications.js</code></p>
+
+<div class="highlight highlight-ruby"><pre>...
+<span class="pl-sr"><span class="pl-pds">//</span></span><span class="pl-k">=</span> <span class="pl-k">require</span> ui_bibz
+...</pre></div>
+
 <h2>
 <a id="utilisation" class="anchor" href="#utilisation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Utilisation</h2>
 
@@ -121,7 +132,7 @@ dans <code>options</code> et <code>html_options</code>.</p>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/alert.png" alt="alert"></p>
 
-<p>L'élément <code>notify</code> accepte en option les arguments :</p>
+<p>L'élément <code>notify</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#state-values">state</a></li>
@@ -135,7 +146,7 @@ dans <code>options</code> et <code>html_options</code>.</p>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/breadcrumb.png" alt="breadcrumb"></p>
 
-<p>L'élément <code>breadcrumb</code> accepte en option les arguments :</p>
+<p>L'élément <code>breadcrumb</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#status-values">status</a></li>
@@ -158,7 +169,7 @@ dans <code>options</code> et <code>html_options</code>.</p>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button.png" alt="button"></p>
 
-<p>L'élément <code>button</code> accepte en option les arguments :</p>
+<p>L'élément <code>button</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#state-values">state</a></li>
@@ -172,7 +183,7 @@ dans <code>options</code> et <code>html_options</code>.</p>
 <h4>
 <a id="button-dropdown" class="anchor" href="#button-dropdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Dropdown</h4>
 
-<p>L'élément <code>button_dropdown</code> accepte pour options les mêmes arguments que l'élément
+<p>L'élément <code>button_dropdown</code> accepte pour options les mêmes clefs que l'élément
 <a href="#dropdown">dropdown</a>.</p>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_dropdown.png" alt="button_link"></p>
@@ -189,14 +200,14 @@ dans <code>options</code> et <code>html_options</code>.</p>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_group.png" alt="button_group"></p>
 
-<p>L'élément <code>button_group</code> accepte pour options les arguments :</p>
+<p>L'élément <code>button_group</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li>position (:vertical, :horizontal)</li>
 <li><a href="#size-values">size</a></li>
 </ul>
 
-<p>L'élément <code>list</code>accepte pour options les arguments :</p>
+<p>L'élément <code>list</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#status-values">status</a></li>
@@ -221,19 +232,19 @@ dans <code>options</code> et <code>html_options</code>.</p>
 <h4>
 <a id="button-link-lien-bouton" class="anchor" href="#button-link-lien-bouton" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Link (Lien Bouton)</h4>
 
-<p>L'élément <code>button_link</code>accepte pour options les arguments :</p>
-
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_link.png" alt="button_link"></p>
+
+<p>L'élément <code>button_link</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button_link <span class="pl-s"><span class="pl-pds">'</span>Button<span class="pl-pds">'</span></span>, { <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#button<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:primary</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>star<span class="pl-pds">'</span></span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>my-button<span class="pl-pds">'</span></span> }</pre></div>
 
 <h4>
 <a id="button-split-dropdown" class="anchor" href="#button-split-dropdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Button Split Dropdown</h4>
 
-<p>L'élément <code>button_split_dropdown</code>accepte pour options les mêmes arguments
-que l'élément <a href="#dropdown">dropdown</a>.</p>
-
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/button_split_dropdown.png" alt="button_group"></p>
+
+<p>L'élément <code>button_split_dropdown</code>accepte pour options les mêmes clefs
+que l'élément <a href="#dropdown">dropdown</a>.</p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> button_split_dropdown <span class="pl-s"><span class="pl-pds">'</span>Dropdown<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:primary</span> <span class="pl-k">do </span>|<span class="pl-smi">d</span>|
   <span class="pl-k">-</span> d.list <span class="pl-k">do</span>
@@ -246,7 +257,7 @@ que l'élément <a href="#dropdown">dropdown</a>.</p>
 <h3>
 <a id="dropdown" class="anchor" href="#dropdown" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dropdown</h3>
 
-<p>L'élément <code>dropdown</code>accepte pour options les arguments :</p>
+<p>L'élément <code>dropdown</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#state-values">state</a></li>
@@ -254,7 +265,7 @@ que l'élément <a href="#dropdown">dropdown</a>.</p>
 <li>position (:left, :right)</li>
 </ul>
 
-<p>L'élément <code>list</code> est un <a href="#component">component</a> qui accepte pour options les arguments :</p>
+<p>L'élément <code>list</code> est un <a href="#component">component</a> qui accepte pour options les clefs :</p>
 
 <ul>
 <li>type (:header)</li>
@@ -269,8 +280,9 @@ que l'élément <a href="#dropdown">dropdown</a>.</p>
   <span class="pl-k">-</span> d.list <span class="pl-s"><span class="pl-pds">'</span>---<span class="pl-pds">'</span></span>
   <span class="pl-k">-</span> d.list link_to <span class="pl-s"><span class="pl-pds">'</span>lolo<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>#<span class="pl-pds">'</span></span></pre></div>
 
-<p>Pour ajouter une ligne séparatrice, il suffit d'insérer 3 "-" à la suite
-ex :</p>
+<p>Pour ajouter une ligne séparatrice, il suffit d'insérer 3 "-" à la suite</p>
+
+<p>Exemple :</p>
 
 <pre><code>...
 d.list '--'
@@ -278,12 +290,41 @@ d.list '--'
 </code></pre>
 
 <h3>
+<a id="progress-bar" class="anchor" href="#progress-bar" aria-hidden="true"><span class="octicon octicon-link"></span></a>Progress Bar</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/progress_bar.png" alt="glyph"></p>
+
+<p>L'élément <code>progress_bar</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li>type (:animated, :striped)</li>
+<li>label - String (default: "percentage%")</li>
+<li>tap - Boolean (true: To add several bars)</li>
+<li>percentage_min - Integer (default: 0)</li>
+<li>percentage_max - Integer (default: 100)</li>
+<li>sr_only - Boolean to show label (default: false)</li>
+</ul>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> progress_bar <span class="pl-c1">30</span>
+<span class="pl-c"># or</span>
+<span class="pl-k">=</span> progress_bar <span class="pl-c1">state:</span> <span class="pl-c1">:info</span>, <span class="pl-c1">sr_only:</span> <span class="pl-c1">true</span>, <span class="pl-c1">type:</span> <span class="pl-c1">:animated</span> <span class="pl-k">do</span>
+  <span class="pl-k">=</span> <span class="pl-c1">70</span>
+<span class="pl-c"># or</span>
+<span class="pl-k">=</span> progress_bar(<span class="pl-c1">tap:</span> <span class="pl-c1">true</span>) <span class="pl-k">do </span>|<span class="pl-smi">pb</span>|
+  <span class="pl-k">-</span> pb.bar <span class="pl-c1">10</span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span>, <span class="pl-c1">label:</span> <span class="pl-s"><span class="pl-pds">'</span>Loading...<span class="pl-pds">'</span></span> },{ <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>test<span class="pl-pds">'</span></span> }
+  <span class="pl-k">-</span> pb.bar <span class="pl-c1">30</span>, <span class="pl-c1">state:</span> <span class="pl-c1">:warning</span>
+  <span class="pl-k">-</span> pb.bar(<span class="pl-c1">type:</span> <span class="pl-c1">:striped</span>) <span class="pl-k">do</span>
+    <span class="pl-k">=</span> <span class="pl-c1">10</span></pre></div>
+
+<h3>
 <a id="glyph" class="anchor" href="#glyph" aria-hidden="true"><span class="octicon octicon-link"></span></a>Glyph</h3>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/glyph.png" alt="glyph"></p>
 
 <p>Les glyphs utilisés proviennent de <a href="http://fontawesome.io/">Font Awesome</a>.
-L'élément <code>glyph</code> accepte pour options les arguments :</p>
+L'élément <code>glyph</code> peut contenir un hash pour <code>content</code>
+L'élément <code>glyph</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li>size</li>
@@ -299,15 +340,16 @@ ou
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/panel.png" alt="panel"></p>
 
-<p>L'élément <code>panel</code> accepte pour options les arguments :</p>
+<p>L'élément <code>panel</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
 
 <ul>
 <li><a href="#state">state</a></li>
 <li>tap (true) : permet de créer un header, body et footer</li>
 </ul>
 
-<p>Les éléments <code>header</code>, <code>body</code>,<code>footer</code> sont des éléments <a href="#component">component</a>.
-Exemple :</p>
+<p>Les éléments <code>header</code>, <code>body</code>,<code>footer</code> sont des éléments <a href="#component">component</a>.</p>
+
+<p>Exemple :</p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> panel <span class="pl-s"><span class="pl-pds">'</span>danger<span class="pl-pds">'</span></span>
 <span class="pl-c"># ou</span>
@@ -325,15 +367,16 @@ Exemple :</p>
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table.png" alt="table"></p>
 
-<p>L'élément <code>table</code> est un tableau composé d'une recherche, une pagination et un trie de colonnes intégré.
+<p>L'élément <code>table</code> est un tableau composé d'une recherche, une pagination et un trie de colonnes intégrées.
 Le tableau est compatible <a href="http://guides.rubyonrails.org/i18n.html">I18n</a>.
-Le tableau contient pour chaque ligne un bouton dropdown action avec par défaut
-ces 3 actions : voir, éditer, supprimer. Toute les colonnes sont présentent et
+Le tableau contient pour chaque ligne un bouton dropdown 'action' avec par défaut
+ces 3 actions : voir, éditer, supprimer. Toutes les colonnes sont présentes et
 affichées par défaut.</p>
 
-<p>La table doit contenir un store. Ce store est créé dans le controlleur avec la
-méthode <code>table_search_pagination</code>.
-La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
+<p>La table doit contenir un store. Ce store doit-être créé dans le controlleur avec la
+méthode <code>table_search_pagination</code>.</p>
+
+<p>La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
 
 <ul>
 <li>params</li>
@@ -354,8 +397,9 @@ faire une recherche sur les attributs souhaités.</p>
 <div class="highlight highlight-ruby"><pre><span class="pl-c"># app/models/document.rb</span>
 searchable_attributes <span class="pl-c1">:name_fr</span>, <span class="pl-c1">:name_en</span></pre></div>
 
-<p>Un champ recherche est disponible dans la vue :
-<img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table_search_field.png" alt="table_search_field"></p>
+<p>Un champ recherche est disponible dans la vue :</p>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table_search_field.png" alt="table_search_field"></p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> table_search_field <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span></pre></div>
 
@@ -387,7 +431,7 @@ La méthode <code>table_search_pagination</code> contient 3 arguments :</p>
 <span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.table_search_pagination(params, session)</pre></div>
 
 <p>Dans le <strong>model</strong>, insérer la méthode <code>searchable_attributes</code> afin de pouvoir
-faire une recherche pour les attributs souhaités.</p>
+faire une recherche sur les attributs souhaités.</p>
 
 <p>Exemple :</p>
 
@@ -409,7 +453,7 @@ searchable_attributes <span class="pl-c1">:name_fr</span>, <span class="pl-c1">:
 <div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
 <span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span></pre></div>
 
-<p>Les actions par défauts peuvent être modifiées (voir exemple complexe) :</p>
+<p>Les actions par défauts peuvent être modifiées (<a href="#Complex-Example-table">voir exemple complexe</a>) :</p>
 
 <ul>
 <li>edit</li>
@@ -456,7 +500,7 @@ searchable_attributes <span class="pl-c1">:name_fr</span>, <span class="pl-c1">:
 <h4>
 <a id="complex-example-table" class="anchor" href="#complex-example-table" aria-hidden="true"><span class="octicon octicon-link"></span></a>Complex Example table</h4>
 
-<p>Si on souhaite voir apparaître des liasions avec d'autres tables il faut pour
+<p>Si on souhaite voir apparaître certaines liasions avec d'autres tables il faut pour
 cela :</p>
 
 <p>Dans le controlleur, insérer la méthode <code>table_search_pagination</code> en ajoutant
@@ -469,7 +513,7 @@ un <code>includes</code> juste avant.</p>
 
 <p>Dans la vue, insérer la méthod <code>table</code>.
 NB: On peut créer ces propres méthodes comme <code>user_name</code> dans notre model "Document" et
-l'utiliser dans le data_index.</p>
+l'appeler comme valeur pour la clef <code>data_index</code>.</p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-c"># app/views/documents/index.html.haml</span>
 <span class="pl-k">=</span> table <span class="pl-c1">store:</span> <span class="pl-smi">@documents</span> <span class="pl-k">do </span>|<span class="pl-smi">g</span>|
@@ -500,12 +544,12 @@ arguments  <span class="pl-k">=</span> { <span class="pl-c1">sortable:</span> {
 <span class="pl-s">          LEFT OUTER JOIN users ON users.id = products_users.user_id<span class="pl-pds">"</span></span>
 } }
 
-<span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.includes(<span class="pl-c1">:users</span>).table_search_pagination(params, session,
-arguments)</pre></div>
+<span class="pl-smi">@documents</span> <span class="pl-k">=</span> <span class="pl-c1">Document</span>.includes(<span class="pl-c1">:users</span>).table_search_pagination(params, session, arguments)</pre></div>
 
 <p>Ici l'argument sortable signifie que l'on souhaite s'interresser à la
-fonctionnalité de trie.
-Pour celà il faut :</p>
+fonctionnalité de trie.</p>
+
+<p>Pour celà il faut :</p>
 
 <ul>
 <li>définir le nom de la colonne triéé à travers l'argument <code>column:</code> (string)</li>
@@ -553,7 +597,7 @@ s'executent par ordre d'importance dans cet ordre précis pour la colonne "name_
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/table_panel.png" alt="table_panel"></p>
 
-<p>Le composant <code>table_panel</code> est un tableau dans un panel.</p>
+<p>Le composant <code>table_panel</code> est un <a href="#table">tableau</a> dans un <a href="#panel">panel</a>.</p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> table_panel <span class="pl-c1">store:</span> <span class="pl-smi">@users</span>
 <span class="pl-c">#ou</span>
@@ -575,8 +619,9 @@ s'executent par ordre d'importance dans cet ordre précis pour la colonne "name_
 
 <p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/list.png" alt="list"></p>
 
-<p>Par défaut une liste à pour tag <code>&lt;li&gt;</code>. Mais elle peut se transformer en lien <code>&lt;a&gt;</code>
-à travers l'option <code>type:</code>. Par défaut le tag <code>&lt;li&gt;</code> est présent.</p>
+<p>Par défaut une liste à pour tag <code>&lt;li&gt;</code>.
+Mais elle peut se transformer en lien <code>&lt;a&gt;</code> à travers l'option <code>type:</code>.
+Par défaut le tag <code>&lt;li&gt;</code> est présent.</p>
 
 <div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> list_group <span class="pl-c1">type:</span> <span class="pl-c1">:link</span> <span class="pl-k">do </span>|<span class="pl-smi">lg</span>|
   <span class="pl-k">-</span> lg.list <span class="pl-s"><span class="pl-pds">'</span>Momo<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span>, <span class="pl-c1">glyph:</span> <span class="pl-s"><span class="pl-pds">'</span>home<span class="pl-pds">'</span></span> }, { <span class="pl-c1">href:</span> <span class="pl-s"><span class="pl-pds">'</span>#Momo<span class="pl-pds">'</span></span> }
@@ -609,7 +654,23 @@ L'élément <code>nav</code> accepte en option les arguments :</p>
   d.link <span class="pl-s"><span class="pl-pds">'</span>Test2<span class="pl-pds">'</span></span>, <span class="pl-c1">url:</span> <span class="pl-s"><span class="pl-pds">'</span>#test2<span class="pl-pds">'</span></span>, <span class="pl-c1">status:</span> <span class="pl-c1">:active</span></pre></div>
 
 <h3>
-<a id="label" class="anchor" href="#label" aria-hidden="true"><span class="octicon octicon-link"></span></a>Label</h3>
+<a id="etiquette" class="anchor" href="#etiquette" aria-hidden="true"><span class="octicon octicon-link"></span></a>Etiquette</h3>
+
+<p><img src="https://github.com/thooams/Ui-Bibz/raw/master/doc/images/etiquette.png" alt="list"></p>
+
+<p>NB : Les méthodes <code>Tag, label</code> sont déjà utilisées par Rails.
+L'élément <code>etiquette</code> à pour <code>options</code> un Hash acceptant les clefs :</p>
+
+<ul>
+<li><a href="#state-values">state</a></li>
+<li><a href="#glyph-values">glyph</a></li>
+</ul>
+
+<p>Exemple :</p>
+
+<div class="highlight highlight-ruby"><pre><span class="pl-k">=</span> etiquette <span class="pl-s"><span class="pl-pds">'</span>label<span class="pl-pds">'</span></span>
+<span class="pl-k">=</span> etiquette <span class="pl-s"><span class="pl-pds">'</span>label 2<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:success</span>
+<span class="pl-k">=</span> etiquette <span class="pl-s"><span class="pl-pds">'</span>label 2<span class="pl-pds">'</span></span>, <span class="pl-c1">state:</span> <span class="pl-c1">:danger</span></pre></div>
 
 <h3>
 <a id="row" class="anchor" href="#row" aria-hidden="true"><span class="octicon octicon-link"></span></a>Row</h3>
@@ -769,11 +830,18 @@ comme ci-dessous.</p>
 panel <span class="pl-s"><span class="pl-pds">'</span>Exemple<span class="pl-pds">'</span></span>, { <span class="pl-c1">state:</span> <span class="pl-c1">:success</span> }, { <span class="pl-c1">class:</span> <span class="pl-s"><span class="pl-pds">'</span>exemple<span class="pl-pds">'</span></span> }</pre></div>
 
 <h1>
-<a id="a-faire-" class="anchor" href="#a-faire-" aria-hidden="true"><span class="octicon octicon-link"></span></a>A faire :</h1>
+<a id="roadmap-" class="anchor" href="#roadmap-" aria-hidden="true"><span class="octicon octicon-link"></span></a>Roadmap :</h1>
+
+<p>Pour la V2.</p>
 
 <ul>
-<li>progress bar</li>
-<li>media
+<li>créer des stores pour les listes, breadcrumb</li>
+<li>créer une meilleure documentation</li>
+<li>créer d'autres extensions, plugins et une guideline</li>
+<li>donner le choix de la dépendence boostrap et awesomefont en CDN ou en local</li>
+<li>mise à jour vers bootstrap 4</li>
+<li>créer Ui-Bibz Core à partir de cette librairie ( pour l'insérer dans un nouveau
+framework Ui-Bibz utilisant simple_form pour les champs formulaires ).
 ...</li>
 </ul>
 
